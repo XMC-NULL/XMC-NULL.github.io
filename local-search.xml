@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>comment</title>
+    <link href="/2023/01/15/comment/"/>
+    <url>/2023/01/15/comment/</url>
+    
+    <content type="html"><![CDATA[<p>Utterances评论的代码在下面：</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&lt;script src<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://utteranc.es/client.js&quot;</span><br>    repo<span class="hljs-operator">=</span><span class="hljs-string">&quot;[ENTER REPO HERE]&quot;</span><br>    issue-term<span class="hljs-operator">=</span><span class="hljs-string">&quot;pathname&quot;</span><br>    label<span class="hljs-operator">=</span><span class="hljs-string">&quot;Comment&quot;</span><br>    theme<span class="hljs-operator">=</span><span class="hljs-string">&quot;photon-dark&quot;</span><br>    crossorigin<span class="hljs-operator">=</span><span class="hljs-string">&quot;anonymous&quot;</span><br>    async&gt;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure><p>直接将它插入到你的博客中对应的位置即可。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Record</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>All-Test</title>
     <link href="/2023/01/14/All-Test/"/>
     <url>/2023/01/14/All-Test/</url>
