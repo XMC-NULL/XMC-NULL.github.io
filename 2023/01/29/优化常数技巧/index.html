@@ -1,0 +1,659 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="XMC-NULL">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="技巧1 好久不搞了，强调一下：过不去的题花里胡哨基本也过不去。如果利用这些技巧过了，纯属走运。循环展开，例：for (int i &#x3D; 0; i &lt; 100; i++) &amp;#123;    f(i);&amp;#125;可以改写成：for (int i &#x3D; 0; i &lt; 100;) &amp;#123;    f(i++); f(i++); f(i++); f(i++);&amp;#125;这个操作减少了循环中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优化常数技巧">
+<meta property="og:url" content="http://example.com/2023/01/29/%E4%BC%98%E5%8C%96%E5%B8%B8%E6%95%B0%E6%8A%80%E5%B7%A7/index.html">
+<meta property="og:site_name" content="XMC-NULL&#39;s Blog">
+<meta property="og:description" content="技巧1 好久不搞了，强调一下：过不去的题花里胡哨基本也过不去。如果利用这些技巧过了，纯属走运。循环展开，例：for (int i &#x3D; 0; i &lt; 100; i++) &amp;#123;    f(i);&amp;#125;可以改写成：for (int i &#x3D; 0; i &lt; 100;) &amp;#123;    f(i++); f(i++); f(i++); f(i++);&amp;#125;这个操作减少了循环中">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-29T12:45:14.000Z">
+<meta property="article:modified_time" content="2023-01-29T12:53:25.185Z">
+<meta property="article:author" content="XMC-NULL">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>优化常数技巧 - XMC-NULL&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":100,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":true,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="优化常数技巧"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-29 20:45" pubdate>
+          2023年1月29日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">优化常数技巧</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：几秒前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/oierwa-Luogu/p/10323959.html">技巧1</a></p>
+<p>好久不搞了，强调一下：过不去的题花里胡哨基本也过不去。如果利用这些技巧过了，纯属走运。</p><ol><li data-pid="gbyYFJiy"><span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E5%BE%AA%E7%8E%AF%E5%B1%95%E5%BC%80&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">循环展开<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>，例：</li></ol><div class="highlight"><pre><code class="language-text">for (int i = 0; i &lt; 100; i++) &#123;<br>    f(i);<br>&#125;</code></pre></div><p data-pid="NHRq8c9B">可以改写成：</p><div class="highlight"><pre><code class="language-text">for (int i = 0; i &lt; 100;) &#123;<br>    f(i++); f(i++); f(i++); f(i++);<br>&#125;</code></pre></div><p data-pid="jJQRGLXz">这个操作减少了循环中 i &lt; 100 的判断次数以及 goto 的次数</p><p data-pid="UuWSNY8z">2. 优化<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E6%B1%82%E5%80%BC%E9%A1%BA%E5%BA%8F&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">求值顺序<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>，比如：</p><div class="highlight"><pre><code class="language-text">int sum = sum0 + sum1 + sum2 + sum3;</code></pre></div><p data-pid="1n0tYafw">可以改写成：</p><div class="highlight"><pre><code class="language-text">int t1 = sum0 + sum1;<br>int t2 = sum2 + sum3;<br>int sum = t1 + t2;</code></pre></div><p data-pid="bH8APBMb">看似都是3个加法，但是后者可以利用指令级并行加速。</p><p data-pid="LdXljz1_">1 2 综合运用的例子：</p><div class="highlight"><pre><code class="language-text">int sum0 = 0;<br>int sum1 = 0;<br>int sum2 = 0;<br>int sum3 = 0;<br>for (int i = 0; i &lt; 100; i+=4) &#123;<br>   sum0 += a[i];<br>   sum1 += a[i+1];<br>   sum2 += a[i+2];<br>   sum3 += a[i+3];<br>&#125;<br>int sum = sum0 + sum1 + sum2 + sum3;</code></pre></div><p data-pid="nKHBVh6k">3. 优化高维数组寻址</p><p data-pid="IFuPksNs">例：</p><div class="highlight"><pre><code class="language-text">for (int i = 1; i &lt; n; i++) &#123;<br>   for (int j = 1; j &lt; n; j++) &#123;<br>      for (int k = 1; k &lt; n; k++) &#123;<br>         dp[i][j][k] = dp[i][j][k-1] + dp[i-1][j][k] + dp[i][j-1][k];<br>      &#125;<br>   &#125;<br>&#125;</code></pre></div><p data-pid="yKNOGJJF">可以改写为：</p><div class="highlight"><pre><code class="language-text">for (int i = 1; i &lt; n; i++) &#123;<br>   for (int j = 1; j &lt; n; j++) &#123;<br>      auto &amp;dp_ij = dp[i][j];<br>      auto &amp;dp_i1j = dp[i-1][j];<br>      auto &amp;dp_ij1 = dp[i][j-1];<br>      for (int k = 1; k &lt; n; k++) &#123;<br>         dp_ij [k] = dp_ij[k-1] + dp_i1j [k] + dp_ij1[k];<br>      &#125;<br>   &#125;<br>&#125;</code></pre></div><p data-pid="k9JKv9I9">4. 优化<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E5%B5%8C%E5%A5%97%E6%95%B0%E7%BB%84&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">嵌套数组<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>寻址</p><p data-pid="HUd79DwM">例：</p><div class="highlight"><pre><code class="language-text">for (int i = 0; i &lt; n; i++) &#123;<br>  a[i] = b[c[d[i]]];<br>&#125;</code></pre></div><p data-pid="KoRpVM9k">可以改写为：</p><div class="highlight"><pre><code class="language-text">for (int i = 0; i &lt; n; i++) &#123;<br>  helper[i] = c[d[i]];<br>&#125;<br>for (int i = 0; i &lt; n; i++) &#123;<br>  a[i] = b[helper[i]];<br>&#125;</code></pre></div><p data-pid="HnuPpr6W">理论基础：用好 cache，连续的内存会自动被读入 cache。多次嵌套的<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E6%95%B0%E7%BB%84%E5%AF%BB%E5%9D%80&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">数组寻址<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>会让 cache 命中率变低。</p><p data-pid="Idyt0Jh1">实战例子：在<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">后缀数组<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>的 20 行模板中：</p><div class="highlight"><pre><code class="language-text">int wa[MAXN], wb[MAXN], wv[MAXN], ws[MAXN];<br>inline bool cmp(int *r, int a, int b, int len) &#123;<br>    return r[a]==r[b] &amp;&amp; r[a+len]==r[b+len];<br>&#125;<br>void SA(char *r, int *sa, int n, int m)<br>&#123;<br>    int i, j, p, *x = wa, *y = wb, *t;	<br>    for (i = 0; i &lt; m; i++) ws[i] = 0;<br>    for (i = 0; i &lt; n; i++) ws[x[i] = r[i]]++;<br>    for (i = 1; i &lt; m; i++) ws[i] += ws[i - 1];<br>    for (i = n - 1; i &gt;= 0; i--) sa[--ws[x[i]]] = i;<br>    for (j = p = 1; p &lt; n; j &lt;&lt;= 1, m = p)<br>    &#123;<br>        for (p = 0, i = n - j; i &lt; n; i++) y[p++] = i;<br>        for (i = 0; i &lt; n; i++) if (sa[i] &gt;= j) y[p++] = sa[i] - j;<br>        for (i = 0; i &lt; m; i++) ws[i] = 0;<br>        for (i = 0; i &lt; n; i++) ws[wv[i] = x[y[i]]]++;<br>        for (i = 1; i &lt; m; i++) ws[i] += ws[i - 1];<br>        for (i = n - 1; i &gt;= 0; i--) sa[--ws[wv[i]]] = y[i];<br>        for (t=x,x=y,y=t, x[sa[0]]=0, p=i=1; i&lt;n; i++)<br>            x[sa[i]] = cmp(y,sa[i-1],sa[i],j) ? p-1 : p++;<br>    &#125;<br>&#125;</code></pre></div><p data-pid="y97RCypa">这里 “for (i &#x3D; 0; i &lt; n; i++) ws[wv[i] &#x3D; x[y[i]]]++;”顺手实现了 wv[i] &#x3D; x[y[i]]，然后下两行 “for (i &#x3D; n - 1; i &gt;&#x3D; 0; i–) sa[–ws[wv[i]]] &#x3D; y[i];”实际上实现了一个稳定的<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">计数排序<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>，这里使用了 wv[i]，没有直接使用 x[y[i]]，就是优化了数组寻址。</p><p data-pid="9nml8VBd">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Update：连续被点赞，增加几条 &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p><p data-pid="FONXH2ec">5. Java 黑科技</p><p data-pid="Y6xLzCPX">我们那个时代，ACM里 C++11都不开。但是 JDK 可是全功能的……</p><p data-pid="MvlHUIBi">因此可以使用 Java 的黑科技包括但不限于：</p><p data-pid="5e0wagOE">5.1 自定义栈大小，Java thread 有：</p><div class="highlight"><pre><code class="language-text">public Thread(ThreadGroup group,<br>      Runnable target,<br>      String name,<br>      long stackSize)</code></pre></div><p data-pid="IUHSR6eZ">再也不用担心在退化成链表的图里面DFS爆栈了</p><p data-pid="gcR7C9A1">5.2 多线程</p><p data-pid="eMX7v_b1">由于 Thread 是内置功能，Java 又有比 C++ 更长的时限，而 Java 单纯计算的效率没比 C++ 慢出太多。所以可以使用多线程计算…… 具体实现可以是起若干个线程，然后用一个 CyclicBarrier 等待所有线程跑完，输出结果</p><p data-pid="Wqxf7NFu">5.3 作图</p><p data-pid="5Cn2ZFP7">是的，JDK 自带 JavaFx，可以做一个 GUI，把数据可视化。</p><p data-pid="FUucKasx">&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Update：岛娘亲自点赞了，再更几条！ &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p><p data-pid="I830PVTb">6. 打表找规律</p><p data-pid="JX5fl8fD">6.1 加速篇：结合 5.2，你可以写出比别人更猛的打表程序。如果测试机有 C++ 版线程库更佳</p><p data-pid="Qb9I2mwO">6.2 找<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E9%80%92%E6%8E%A8%E5%85%AC%E5%BC%8F&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">递推公式<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span></p><p data-pid="HUlTgBkP">通项公式是多项式的数列，都可以靠解方程解出来通项公式</p><p data-pid="oDaveCTw">比如说一个数列，1 4 9 16 25…… 你也不知道他是啥（这怎么可能看不出是啥），但是盲猜他的通项公式是多项式，假设最高项是三次方，那么 f(x) &#x3D; ax^3 + bx^2 + cx^1 + d，问题就变成了个解方程问题：</p><div class="highlight"><pre><code class="language-text">1 = a + b + c + d<br>4 = 8a + 4b + 2c + d<br>9 = 27a + 9b + 3c + d<br>16 = 64a + 16b + 4c + d</code></pre></div><p data-pid="IzlupWt3">比如说又打表得出一个数列 1 1 2 3 5 8 13 21…，你也不知道他是啥，但是如果你猜他的递推公式是 f[i] &#x3D; a * <i>f[i-1] + b *</i> f[i-2] + c * f[i-3] + d 这样的，那么问题就变成了个解方程问题：</p><div class="highlight"><pre><code class="language-text">3 = 2a + b + c + d<br>5 = 3a + 2b + c + d<br>8 = 5a + 3b + 2c + d<br>13 = 8a + 5b + 3c + d</code></pre></div><p data-pid="cayp0tSI">嗯，可以解得 a &#x3D; 1 b &#x3D; 1 c &#x3D; 0 d &#x3D; 0，于是递推公式就暴力解方程解出来了。</p><p data-pid="BssgiTIP">6.3 暴力DFS，枚举思路贪心对拍</p><p data-pid="pc_hAFOj">常见于盲猜是个贪心，但是不知道怎么贪。可以先写个<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E6%9A%B4%E5%8A%9B%E8%A7%A3%E6%B3%95&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">暴力解法<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>，然后编若干<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">测试数据<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>，然后枚举思路：贪 xx 大的优先，xx 小的优先 等。某条思路和暴力解法解一样就 Bingo 了</p><p data-pid="Vu-4MxtZ">7. 这里不推荐<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E5%86%85%E5%B5%8C%E6%B1%87%E7%BC%96&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">内嵌汇编<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>。因为每个平台对内嵌汇编的支持都不一样，没法训练。而且2202年了，手撸的汇编还真不一定打得过编译器。。。</p><p data-pid="HHEE0oao">8. 调整分支语句的逻辑顺序</p><p data-pid="aNfBnN6S">比如：</p><div class="highlight"><pre><code class="language-text">if (cond1) &#123;<br>    do_something1();<br>&#125; else if (cond2) &#123;<br>    do_something2();<br>&#125; else if (cond3) &#123;<br>    do_something3();<br>&#125;</code></pre></div><p data-pid="MaTr3rCF">如果 cond1，cond2，cond3 不相关，且绝大多数情况下都是 cond2，可以改写成：</p><div class="highlight"><pre><code class="language-text">if (cond2) &#123;<br>    do_something2();<br>&#125; else if (cond1) &#123;<br>    do_something1();<br>&#125; else if (cond3) &#123;<br>    do_something3();<br>&#125;</code></pre></div><p data-pid="lINRu0FR">9. Struct &gt; N个数组</p><p data-pid="SUYhYnLS">常见的例子是：</p><div class="highlight"><pre><code class="language-text">struct Interval &#123;<br>  int left;<br>  int right;<br>  int value;<br>&#125;;<p></p>
+<p>Interval intervals[100000];</p></code></pre></div><p data-pid="Psl6OkGx">vs</p><div class="highlight"><pre><code class="language-text">int interval_left[100000];<br>int interval_right[100000];<br>int value[100000];</code></pre></div><p data-pid="UEtUAYGL">前者的效率会更高，因为随机访问 intervals[i] 的时候，所在的一个内存页都会从主内存放到 cache，而访问 interval[i] 就很可能顺手访问 interval[i+1], interval[i+2]，写成 struct <span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD%E7%8E%87&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">缓存命中率<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>就会高。而拆成三个数组的话，访问 interval_right[i] 的时候，可能就会把 interval_left[i] 的缓存顶掉。下次访问 interval_left[i+1] 的时候就又要从主<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E5%86%85%E5%AD%98%E5%AF%BB%E5%9D%80&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">内存寻址<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>了</p><p data-pid="wFNSuCGZ">其实写完回头看看，这里提到的绝大多数优化性能的操作都是正道…… 可以参考《<span><a class="RichContent-EntityWord css-pgtd2j" data-za-not-track-link="true" href="https://www.zhihu.com/search?q=%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F&amp;search_source=Entity&amp;hybrid_search_source=Entity&amp;hybrid_search_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2590083542%7D" target="_blank">深入理解计算机系统<svg width="10px" height="10px" viewbox="0 0 15 15" class="css-1dvsrp"><path d="M10.89 9.477l3.06 3.059a1 1 0 0 1-1.414 1.414l-3.06-3.06a6 6 0 1 1 1.414-1.414zM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="currentColor"/></svg></a></span>》第五章，有详细介绍。在测试数据不够强的情况下，用一个略低效的算法，但低空卡时间飞过是有可能的。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>优化常数技巧</div>
+      <div>http://example.com/2023/01/29/优化常数技巧/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>XMC-NULL</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/17/Welcome_to_comment/" title="Welcome_to_comment">
+                        <span class="hidden-mobile">Welcome_to_comment</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments">
+      
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'photon-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'XMC-NULL/XMC-NULL.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       Made by XMC-NULL 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    
+      <script  src="/js/img-lazyload.js" ></script>
+    
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
