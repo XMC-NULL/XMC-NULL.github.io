@@ -23,27 +23,6 @@
   
   
   <entry>
-    <title>修复Google翻译</title>
-    <link href="/2023/01/31/%E4%BF%AE%E5%A4%8DGoogle%E7%BF%BB%E8%AF%91/"/>
-    <url>/2023/01/31/%E4%BF%AE%E5%A4%8DGoogle%E7%BF%BB%E8%AF%91/</url>
-    
-    <content type="html"><![CDATA[<h2 id="2023-1-31时成功"><a href="#2023-1-31时成功" class="headerlink" title="2023.1.31时成功"></a>2023.1.31时成功</h2><hr><ul><li><p>1.修改hosts<br> （在C:\windows\system32\drivers\etc下）</p></li><li><p>2.找可用的ip<br>链接：<a href="https://github.com/hcfyapp/google-translate-cn-ip">On Github</a></p></li><li><p>3.测试ip<br>xx.xx.xx.xx translate.googleapis.com</p></li></ul><hr>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Fix</tag>
-      
-      <tag>Google</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>优化常数技巧</title>
     <link href="/2023/01/29/%E4%BC%98%E5%8C%96%E5%B8%B8%E6%95%B0%E6%8A%80%E5%B7%A7/"/>
     <url>/2023/01/29/%E4%BC%98%E5%8C%96%E5%B8%B8%E6%95%B0%E6%8A%80%E5%B7%A7/</url>
@@ -63,30 +42,11 @@
   
   
   <entry>
-    <title>comment</title>
-    <link href="/2023/01/15/comment/"/>
-    <url>/2023/01/15/comment/</url>
-    
-    <content type="html"><![CDATA[<p>Utterances评论的代码在下面：</p><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&lt;script src<span class="hljs-operator">=</span><span class="hljs-string">&quot;https://utteranc.es/client.js&quot;</span><br>    repo<span class="hljs-operator">=</span><span class="hljs-string">&quot;[ENTER REPO HERE]&quot;</span><br>    issue-term<span class="hljs-operator">=</span><span class="hljs-string">&quot;pathname&quot;</span><br>    label<span class="hljs-operator">=</span><span class="hljs-string">&quot;Comment&quot;</span><br>    theme<span class="hljs-operator">=</span><span class="hljs-string">&quot;photon-dark&quot;</span><br>    crossorigin<span class="hljs-operator">=</span><span class="hljs-string">&quot;anonymous&quot;</span><br>    async&gt;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure><p>直接将它插入到你的博客中对应的位置即可。</p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Record</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>All-Test</title>
-    <link href="/2023/01/14/All-Test/"/>
-    <url>/2023/01/14/All-Test/</url>
+    <link href="/2023/01/14/Test/"/>
+    <url>/2023/01/14/Test/</url>
     
-    <content type="html"><![CDATA[<h2 id="Start-Test"><a href="#Start-Test" class="headerlink" title="Start Test"></a>Start Test</h2><h2 id="1-代码段"><a href="#1-代码段" class="headerlink" title="1.代码段"></a>1.代码段</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello World\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="2-图片"><a href="#2-图片" class="headerlink" title="2.图片"></a>2.图片</h2><p>Picture 1:</p><p><img src="/2023/01/14/All-Test/C++.png" alt="This is C++"></p><p>Picutre 2:</p><p><img src="/2023/01/14/All-Test/Back_Ground.png" alt="This is Back_Ground"></p><h2 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h2><h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a><a href="https://github.com/">Github</a></h3><h3 id="XMC-NULL’s-Blog"><a href="#XMC-NULL’s-Blog" class="headerlink" title="XMC-NULL’s Blog"></a><a href="https://xmc-null.github.io/">XMC-NULL’s Blog</a></h3><h3 id="Markdown-语法"><a href="#Markdown-语法" class="headerlink" title="Markdown 语法"></a><a href="https://zhuanlan.zhihu.com/p/99319314">Markdown 语法</a></h3><h2 id="4-Markdown语法"><a href="#4-Markdown语法" class="headerlink" title="4.Markdown语法"></a>4.Markdown语法</h2><p><strong>I am 加粗</strong></p><p><strong>I am 加粗 too</strong></p><p><em>I am 倾斜</em></p><p><em>I am 倾斜 too</em></p><p><em><strong>I am 加粗倾斜</strong></em></p><p><del>I am 删除线</del></p><p>分割线(* * *)：</p><hr><blockquote><p>引用</p></blockquote><blockquote><p>在引用的文字前加 &gt; 即可。 在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; 。</p></blockquote><p>列表内容:</p><ul><li>列表内容</li></ul><ul><li>列表内容</li></ul><ul><li>列表内容</li></ul><p>用’\‘强制换行</p><p>就像这样：</p><p>在操场上沿一直线排列着n堆石子，现要将石子有次序地合并成一堆。<br>规定每次只能选相邻的两堆石子合并成新的一堆，并将新的一堆石子数计为该次合并的得分。</p><h2 id="5-结尾"><a href="#5-结尾" class="headerlink" title="5.结尾"></a>5.结尾</h2><p>如果以上内容正确渲染，Blog 就搭建完成了</p><h2 id="By-XMC-NULL"><a href="#By-XMC-NULL" class="headerlink" title="By XMC-NULL"></a>By XMC-NULL</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="Start-Test"><a href="#Start-Test" class="headerlink" title="Start Test"></a>Start Test</h2><h2 id="1-代码段"><a href="#1-代码段" class="headerlink" title="1.代码段"></a>1.代码段</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello World\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="2-图片"><a href="#2-图片" class="headerlink" title="2.图片"></a>2.图片</h2><p>Picture 1:</p><p><img src="/2023/01/14/Test/C++.png" srcset="/img/loading.gif" lazyload alt="This is C++"></p><p>Picutre 2:</p><p><img src="/2023/01/14/Test/Back_Ground.png" srcset="/img/loading.gif" lazyload alt="This is Back_Ground"></p><h2 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h2><h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a><a href="https://github.com/">Github</a></h3><h3 id="XMC-NULL’s-Blog"><a href="#XMC-NULL’s-Blog" class="headerlink" title="XMC-NULL’s Blog"></a><a href="https://xmc-null.github.io/">XMC-NULL’s Blog</a></h3><h3 id="Markdown-语法"><a href="#Markdown-语法" class="headerlink" title="Markdown 语法"></a><a href="https://zhuanlan.zhihu.com/p/99319314">Markdown 语法</a></h3><h2 id="4-Markdown语法"><a href="#4-Markdown语法" class="headerlink" title="4.Markdown语法"></a>4.Markdown语法</h2><p><strong>I am 加粗</strong></p><p><strong>I am 加粗 too</strong></p><p><em>I am 倾斜</em></p><p><em>I am 倾斜 too</em></p><p><em><strong>I am 加粗倾斜</strong></em></p><p><del>I am 删除线</del></p><p>分割线(* * *)：</p><hr><blockquote><p>引用</p></blockquote><blockquote><p>在引用的文字前加 &gt; 即可。 在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; 。</p></blockquote><p>列表内容:</p><ul><li>列表内容</li></ul><ul><li>列表内容</li></ul><ul><li>列表内容</li></ul><p>用’\‘强制换行</p><p>就像这样：</p><p>在操场上沿一直线排列着n堆石子，现要将石子有次序地合并成一堆。<br>规定每次只能选相邻的两堆石子合并成新的一堆，并将新的一堆石子数计为该次合并的得分。</p><h2 id="5-结尾"><a href="#5-结尾" class="headerlink" title="5.结尾"></a>5.结尾</h2><p>如果以上内容正确渲染，Blog 就搭建完成了</p><h2 id="By-XMC-NULL"><a href="#By-XMC-NULL" class="headerlink" title="By XMC-NULL"></a>By XMC-NULL</h2>]]></content>
     
     
     
