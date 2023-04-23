@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>test-1</title>
+    <link href="/2023/04/23/Test-2/"/>
+    <url>/2023/04/23/Test-2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h2><p><img src="/2023/04/23/Test-2/Code%20-%20png.png" srcset="/img/loading.gif" lazyload alt="Download this picture"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Test</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>哈希素数表</title>
     <link href="/2023/04/12/%E5%93%88%E5%B8%8C%E7%B4%A0%E6%95%B0%E8%A1%A8/"/>
     <url>/2023/04/12/%E5%93%88%E5%B8%8C%E7%B4%A0%E6%95%B0%E8%A1%A8/</url>
@@ -167,10 +186,10 @@
   
   <entry>
     <title>Test</title>
-    <link href="/2023/01/14/Test/"/>
-    <url>/2023/01/14/Test/</url>
+    <link href="/2023/01/14/Test-1/"/>
+    <url>/2023/01/14/Test-1/</url>
     
-    <content type="html"><![CDATA[<h2 id="Start-Test"><a href="#Start-Test" class="headerlink" title="Start Test"></a>Start Test</h2><h2 id="1-代码段"><a href="#1-代码段" class="headerlink" title="1.代码段"></a>1.代码段</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello World\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="2-图片"><a href="#2-图片" class="headerlink" title="2.图片"></a>2.图片</h2><p>Picture 1:</p><p><img src="/2023/01/14/Test/C++.png" srcset="/img/loading.gif" lazyload alt="This is C++"></p><p>Picutre 2:</p><p><img src="/2023/01/14/Test/Back_Ground.png" srcset="/img/loading.gif" lazyload alt="This is Back_Ground"></p><h2 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h2><h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a><a href="https://github.com/">Github</a></h3><h3 id="XMC-NULL’s-Blog"><a href="#XMC-NULL’s-Blog" class="headerlink" title="XMC-NULL’s Blog"></a><a href="https://xmc-null.github.io/">XMC-NULL’s Blog</a></h3><h3 id="Markdown-语法"><a href="#Markdown-语法" class="headerlink" title="Markdown 语法"></a><a href="https://zhuanlan.zhihu.com/p/99319314">Markdown 语法</a></h3><h2 id="4-Markdown语法"><a href="#4-Markdown语法" class="headerlink" title="4.Markdown语法"></a>4.Markdown语法</h2><p><strong>I am 加粗</strong></p><p><strong>I am 加粗 too</strong></p><p><em>I am 倾斜</em></p><p><em>I am 倾斜 too</em></p><p><em><strong>I am 加粗倾斜</strong></em></p><p><del>I am 删除线</del></p><p>分割线(* * *)：</p><hr><blockquote><p>引用</p></blockquote><blockquote><p>在引用的文字前加 &gt; 即可。 在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; 。</p></blockquote><p>列表内容:</p><ul><li>列表内容</li></ul><ul><li>列表内容</li></ul><ul><li>列表内容</li></ul><p>用’\‘强制换行</p><p>就像这样：</p><p>在操场上沿一直线排列着n堆石子，现要将石子有次序地合并成一堆。<br>规定每次只能选相邻的两堆石子合并成新的一堆，并将新的一堆石子数计为该次合并的得分。</p><h2 id="5-结尾"><a href="#5-结尾" class="headerlink" title="5.结尾"></a>5.结尾</h2><p>如果以上内容正确渲染，Blog 就搭建完成了</p><h2 id="By-XMC-NULL"><a href="#By-XMC-NULL" class="headerlink" title="By XMC-NULL"></a>By XMC-NULL</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="Start-Test"><a href="#Start-Test" class="headerlink" title="Start Test"></a>Start Test</h2><h2 id="1-代码段"><a href="#1-代码段" class="headerlink" title="1.代码段"></a>1.代码段</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello World\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="2-图片"><a href="#2-图片" class="headerlink" title="2.图片"></a>2.图片</h2><p>Picture 1:</p><p><img src="/2023/01/14/Test-1/C++.png" srcset="/img/loading.gif" lazyload alt="This is C++"></p><p>Picutre 2:</p><p><img src="/2023/01/14/Test-1/Back_Ground.png" srcset="/img/loading.gif" lazyload alt="This is Back_Ground"></p><h2 id="3-链接"><a href="#3-链接" class="headerlink" title="3.链接"></a>3.链接</h2><h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a><a href="https://github.com/">Github</a></h3><h3 id="XMC-NULL’s-Blog"><a href="#XMC-NULL’s-Blog" class="headerlink" title="XMC-NULL’s Blog"></a><a href="https://xmc-null.github.io/">XMC-NULL’s Blog</a></h3><h3 id="Markdown-语法"><a href="#Markdown-语法" class="headerlink" title="Markdown 语法"></a><a href="https://zhuanlan.zhihu.com/p/99319314">Markdown 语法</a></h3><h2 id="4-Markdown语法"><a href="#4-Markdown语法" class="headerlink" title="4.Markdown语法"></a>4.Markdown语法</h2><p><strong>I am 加粗</strong></p><p><strong>I am 加粗 too</strong></p><p><em>I am 倾斜</em></p><p><em>I am 倾斜 too</em></p><p><em><strong>I am 加粗倾斜</strong></em></p><p><del>I am 删除线</del></p><p>分割线(* * *)：</p><hr><blockquote><p>引用</p></blockquote><blockquote><p>在引用的文字前加 &gt; 即可。 在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; 。</p></blockquote><p>列表内容:</p><ul><li>列表内容</li></ul><ul><li>列表内容</li></ul><ul><li>列表内容</li></ul><p>用’\‘强制换行</p><p>就像这样：</p><p>在操场上沿一直线排列着n堆石子，现要将石子有次序地合并成一堆。<br>规定每次只能选相邻的两堆石子合并成新的一堆，并将新的一堆石子数计为该次合并的得分。</p><h2 id="5-结尾"><a href="#5-结尾" class="headerlink" title="5.结尾"></a>5.结尾</h2><p>如果以上内容正确渲染，Blog 就搭建完成了</p><h2 id="By-XMC-NULL"><a href="#By-XMC-NULL" class="headerlink" title="By XMC-NULL"></a>By XMC-NULL</h2>]]></content>
     
     
     
